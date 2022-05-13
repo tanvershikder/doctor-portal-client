@@ -10,8 +10,14 @@ import Login from './Pages/Login/Login';
 import Footer from './Pages/Home/Shared/Footer/Footer';
 import Signup from './Pages/Login/Signup';
 import RequireAuth from './Pages/Login/RequireAuth';
+import { useEffect } from 'react'
+import { themeChange } from 'theme-change'
 
 function App() {
+  // theme change
+  // useEffect(() => {
+  //   themeChange(false)
+  // }, [])
   return (
     <div className='max-w-7xl mx-auto px-12'>
       <Navbar></Navbar>
