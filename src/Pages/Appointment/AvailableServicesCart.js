@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../Home/Shared/Button/Button';
 
-const AvailableServicesCart = ({ service,setTreatment }) => {
+const slotsServicesCart = ({ service,setTreatment }) => {
     const { name, slots } = service;
     return (
         <div className="card lg:max-w-lg bg-base-100 shadow-xl">
@@ -17,7 +17,7 @@ const AvailableServicesCart = ({ service,setTreatment }) => {
                             <span>Try Another Day</span>
                     }
                 </p>
-                <p className='text-xs'>{slots.length} {slots.length > 1 ? "spaces" : "space"} is Available</p>
+                <p className='text-xs'>{slots.length} {slots.length > 1 ? "spaces" : "space"} is slots</p>
                 <div className="card-actions">
                     <label 
                     htmlFor="Booking-modal" 
@@ -31,4 +31,4 @@ const AvailableServicesCart = ({ service,setTreatment }) => {
     );
 };
 
-export default AvailableServicesCart;
+export default slotsServicesCart;

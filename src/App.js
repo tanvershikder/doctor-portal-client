@@ -10,30 +10,39 @@ import Login from './Pages/Login/Login';
 import Footer from './Pages/Home/Shared/Footer/Footer';
 import Signup from './Pages/Login/Signup';
 import RequireAuth from './Pages/Login/RequireAuth';
-import { useEffect } from 'react'
-import { themeChange } from 'theme-change'
+
+import { ToastContainer } from 'react-toastify';
+import Dashbord from './Pages/Dashbord/Dashbord';
+import MyAppointments from './Pages/Dashbord/MyAppointments';
+import MyReview from './Pages/Dashbord/MyReview';
 
 function App() {
-  // theme change
-  // useEffect(() => {
-  //   themeChange(false)
-  // }, [])
   return (
     <div className='max-w-7xl mx-auto px-12'>
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="appointment" element={
+        <Route path="/about" element={<About />} />
+        <Route path="/appointment" element={
           <RequireAuth>
             <Appointment />
           </RequireAuth>
         } />
-        <Route path="review" element={<Review />} />
-        <Route path="contactus" element={<ContactUs />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
+        <Route path="/dashbord" element={
+          <RequireAuth>
+            <Dashbord />
+          </RequireAuth>
+        } >
+          <Route index element={<MyAppointments></MyAppointments>}/>
+          <Route path="review" element={<MyReview></MyReview>}></Route>
+        </Route>
+        <Route path="/review" element={<Review />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
+
+      <ToastContainer></ToastContainer>
 
     </div>
   );
