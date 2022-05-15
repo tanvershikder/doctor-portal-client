@@ -4,6 +4,7 @@ import auth from "../../firebase.init"
 import { useForm } from "react-hook-form";
 import Loading from '../Home/Shared/Loading'
 import { Link, useNavigate } from 'react-router-dom';
+import useToken from '../Hooks/useToken';
 
 const Signup = () => {
 
@@ -11,37 +12,41 @@ const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+
     const navigate = useNavigate();
+
 
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
 
-    if (user || gUser) {
-        console.log(gUser);
-        console.log(user);
-        
-    }
+    const [token] = useToken(user || gUser)
+    
 
-    if(gLoading || loading || updating){
+    if (gLoading || loading || updating) {
         return <Loading></Loading>
     }
 
     let signInerror;
 
-    if(gError || error || updateError){
-        signInerror=<p className="text-red-500"><small>{error?.message || gError?.message || updateError?.message}</small></p>
+    if (gError || error || updateError) {
+        signInerror = <p className="text-red-500"><small>{error?.message || gError?.message || updateError?.message}</small></p>
     }
 
 
 
-    const onSubmit =async data => {
-        
-        await createUserWithEmailAndPassword(data.email,data.password)
-        await updateProfile({ displayName: data.name});
+    const onSubmit = async data => {
+
+        await createUserWithEmailAndPassword(data.email, data.password)
+        await updateProfile({ displayName: data.name });
+        // navigate('/appointment')
+    }
+
+    
+    if (token) {
         navigate('/appointment')
     }
 
