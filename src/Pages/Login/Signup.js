@@ -24,7 +24,7 @@ const Signup = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
 
     const [token] = useToken(user || gUser)
-    
+
 
     if (gLoading || loading || updating) {
         return <Loading></Loading>
@@ -45,7 +45,7 @@ const Signup = () => {
         // navigate('/appointment')
     }
 
-    
+
     if (token) {
         navigate('/appointment')
     }
