@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -15,7 +16,7 @@ const MyAppointments = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/bookings?patient=${user.email}`, {
+            fetch(`https://pacific-stream-06908.herokuapp.com/bookings?patient=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -37,6 +38,9 @@ const MyAppointments = () => {
         }
     }, [user])
 console.log(appointments);
+const date = new Date();
+const formetedDate = format(date,'PP')
+console.log(formetedDate);
 
     return (
         <div>
@@ -54,10 +58,10 @@ console.log(appointments);
                     </thead>
                     <tbody>
                         {
-                            appointments?.map((appointment, index) => <tr key={appointment._id}>
+                            appointments?.map((appointment, index) => <tr key={appointment._id} className='bg-slate-400'>
                                 <td>{index + 1}</td>
                                 <td>{appointment.patient}</td>
-                                <td>{appointment.date}</td>
+                                <td className={formetedDate===appointment.date && 'bg-slate-100 text-blue-600 font-bold'}>{appointment.date}</td>
                                 <th>{appointment.slot}</th>
                                 <td>{appointment.treatment}</td>
                                 <td>

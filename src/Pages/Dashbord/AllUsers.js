@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Home/Shared/Loading';
+import DeleteUserModal from './DeleteUserModal';
 import UserRow from './UserRow';
 
 const AllUsers = () => {
 
-    const { data: users, isLoading ,refetch} = useQuery('users', () => fetch('http://localhost:5000/user',{
+    const [deleteUser,setDeleteUser] = useState(null)
+    console.log(deleteUser);
+
+    const { data: users, isLoading ,refetch} = useQuery('users', () => fetch('https://pacific-stream-06908.herokuapp.com/user',{
         method:'GET',
         headers:{
             authorization:`Bearer ${localStorage.getItem('accessToken')}`
@@ -35,11 +39,17 @@ const AllUsers = () => {
                                 key={user._id} 
                                 user={user}
                                 refetch={refetch}
+                                setDeleteUser={setDeleteUser}
                                 ></UserRow>)
                         }
                     </tbody>
                 </table>
             </div>
+            {deleteUser && <DeleteUserModal
+                deleteUser={deleteUser}
+                setDeleteUser={setDeleteUser}
+                refetch={refetch}
+            ></DeleteUserModal>}
         </div>
     );
 };

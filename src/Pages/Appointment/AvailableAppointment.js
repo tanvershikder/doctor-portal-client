@@ -10,7 +10,7 @@ const AvailableAppointment = ({date}) => {
     const formetedDate = format(date,'PP');
     
     // fetch using react query that will help for reloading and refetch your data
-    const {data:services,isLoading,refetch} = useQuery(['available',formetedDate],()=> fetch(`http://localhost:5000/available?date=${formetedDate}`)
+    const {data:services,isLoading,refetch} = useQuery(['available',formetedDate],()=> fetch(`https://pacific-stream-06908.herokuapp.com/available?date=${formetedDate}`)
         .then(res=> res.json()))
 
     if(isLoading){

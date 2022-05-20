@@ -38,6 +38,7 @@ function App() {
             <Dashbord />
           </RequireAuth>
         } >
+          
           <Route index element={<MyAppointments></MyAppointments>} />
           <Route path='payment/:appointmentId' element={<Payment></Payment>} />
           <Route path="review" element={<MyReview></MyReview>}></Route>

@@ -5,55 +5,57 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
 
-const BookingModal = ({ treatment, date,setTreatment,refetch }) => {
-    const {_id,name,slots,price} = treatment;
+const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
+    const { _id, name, slots, price } = treatment;
 
     const [user, loading, error] = useAuthState(auth);
 
-    const hendelSubmit = event =>{
+    const hendelSubmit = event => {
         event.preventDefault();
         const slot = event.target.slot.value;
 
-    //    const phone=event.target.phone.value
-    //    console.log(phone);
+        //    const phone=event.target.phone.value
+        //    console.log(phone);
         // console.log(id,name,slot);
+
+        // const ndate = date ? date : new Dat b
 
         const formettedDate = format(date,'PP');
 
-        const booking ={
-            treatmentId : _id,
+        const booking = {
+            treatmentId: _id,
             treatment: name,
             date: formettedDate,
             slot,
             price,
-            patient:user.email,
-            patientName:user.displayName,
-            phone:event.target.phone.value
+            patient: user.email,
+            patientName: user.displayName,
+            phone: event.target.phone.value
         }
 
-        fetch('http://localhost:5000/bookings',{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+        fetch('https://pacific-stream-06908.herokuapp.com/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(booking)
-        })  
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data);
-            
-            if(data.success){
-                toast.success(`Appointment is set , ${formettedDate} at ${slot}`)
-            }
-            else{
-                toast.error(`Already have an appointment on ${data.booking?.date} at ${slot}`)
-            }
-            refetch()
-            setTreatment(null)
-        })      
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                if (data.success) {
+                    toast.success(`Appointment is set , ${formettedDate} at ${slot}`)
+                }
+                else {
+                    toast.error(`Already have an appointment on ${data.booking?.date} at ${slot}`)
+                }
+                refetch()
+                setTreatment(null)
+            })
 
         //to close the modal
-        
+
     }
 
     return (
@@ -67,7 +69,7 @@ const BookingModal = ({ treatment, date,setTreatment,refetch }) => {
                         <input type="text" disabled value={format(date, 'PP')} className="input input-bordered w-full max-w-xs" />
                         <select name='slot' className="select select-bordered w-full max-w-xs">
                             {
-                                slots.map((slot,index)=><option key={index} value={slot}>{slot}</option>)
+                                slots.map((slot, index) => <option key={index} value={slot}>{slot}</option>)
                             }
                         </select>
                         <input type="text" disabled value={user?.displayName || " "} placeholder="Full Name" className="input input-bordered w-full max-w-xs" />

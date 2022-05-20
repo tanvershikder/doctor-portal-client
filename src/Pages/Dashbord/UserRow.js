@@ -1,10 +1,10 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const UserRow = ({ user, refetch }) => {
+const UserRow = ({ user, refetch,setDeleteUser }) => {
     const { email, role } = user;
     const hendelMakeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://pacific-stream-06908.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -23,6 +23,9 @@ const UserRow = ({ user, refetch }) => {
                 }
             })
     }
+
+
+   
     return (
         <tr>
             <th>1</th>
@@ -34,7 +37,7 @@ const UserRow = ({ user, refetch }) => {
                     <button onClick={hendelMakeAdmin} className="btn">make Admin</button>
                 }
             </td>
-            <td><button className="btn">Remove user</button></td>
+            <td><label onClick={()=>setDeleteUser(user)} for="user-modal" class="btn modal-button btn-xs  btn-error">Delete</label></td>
         </tr>
     );
 };
