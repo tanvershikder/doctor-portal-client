@@ -4,6 +4,7 @@ import AppointBanner from './AppointBanner';
 import AvailableAppointment from './AvailableAppointment';
 
 const Appointmet = () => {
+    // const date = date ? date : new Date()
     const [newdata, setNewdate] = useState(new Date());
     
     return (
