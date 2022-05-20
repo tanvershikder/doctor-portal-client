@@ -6,7 +6,7 @@ const DeleteUserModal = ({deleteUser,setDeleteUser,refetch}) => {
 
     const hendelDelete = () => {
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://pacific-stream-06908.herokuapp.com/admin/${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
