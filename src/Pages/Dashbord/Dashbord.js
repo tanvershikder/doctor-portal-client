@@ -21,9 +21,11 @@ const Dashbord = () => {
                 <label htmlFor="dashbord-slider" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-48 bg-base-200 text-base-content">
                     {/* <!-- Sidebar content here --> */}
+                <li><Link to='/dashbord'>My Profile</Link></li>
                     {
                         !admin && <>
-                            <li><Link to='/dashbord'>My Appointment</Link></li>
+                           
+                            <li><Link to='/myappointments'>My Appointment</Link></li>
                             <li><Link to='/dashbord/review'>My Review</Link></li>
                         </>
 
