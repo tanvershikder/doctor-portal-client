@@ -9,7 +9,7 @@ import Loading from '../Home/Shared/Loading'
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit ,reset} = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch('https://pacific-stream-06908.herokuapp.com/services').then(res => res.json()))
+    const { data: services, isLoading } = useQuery('services', () => fetch('https://doctor-portal-server-kbzx.vercel.app/services').then(res => res.json()))
 
 
     const imagestorage_key = '8c9e657645bc7264c5c4e9c24848e699';
@@ -36,7 +36,7 @@ const AddDoctor = () => {
                     }
                     
                 // send to you database
-                    fetch('https://pacific-stream-06908.herokuapp.com/doctors',{
+                    fetch('https://doctor-portal-server-kbzx.vercel.app/doctors',{
                         method:'POST',
                         headers:{
                             'content-type':'application/json',

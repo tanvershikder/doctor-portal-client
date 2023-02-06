@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L0VYqIjoDmdgvDrUO0C5ZUrgLT9Zdi3bmtGi
 
 const Payment = () => {
     const { appointmentId } = useParams()
-    const url = `https://pacific-stream-06908.herokuapp.com/bookings/${appointmentId}`
+    const url = `https://doctor-portal-server-kbzx.vercel.app/bookings/${appointmentId}`
 
     const { data: appointment, isLoading } = useQuery(['booking', appointmentId], () => fetch(url, {
         method: 'GET',

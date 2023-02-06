@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const UserRow = ({ user, refetch,setDeleteUser }) => {
     const { email, role } = user;
     const hendelMakeAdmin = () => {
-        fetch(`https://pacific-stream-06908.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://doctor-portal-server-kbzx.vercel.app/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -28,7 +28,7 @@ const UserRow = ({ user, refetch,setDeleteUser }) => {
    
     return (
         <tr>
-            <th>1</th>
+           
             <td>{email}</td>
             <td>
                 {

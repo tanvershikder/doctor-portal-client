@@ -9,13 +9,13 @@ const AllUsers = () => {
     const [deleteUser,setDeleteUser] = useState(null)
     console.log(deleteUser);
 
-    const { data: users, isLoading ,refetch} = useQuery('users', () => fetch('https://pacific-stream-06908.herokuapp.com/user',{
+    const { data: users, isLoading ,refetch} = useQuery('users', () => fetch('https://doctor-portal-server-kbzx.vercel.app/user',{
         method:'GET',
         headers:{
             authorization:`Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()))
-
+console.log(users)
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -30,7 +30,7 @@ const AllUsers = () => {
                             <th></th>
                             <th>Email</th>
                             <th>Roll</th>
-                            <th>Favorite Color</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>

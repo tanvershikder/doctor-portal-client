@@ -16,7 +16,7 @@ const MyAppointments = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`https://pacific-stream-06908.herokuapp.com/bookings?patient=${user.email}`, {
+            fetch(`https://doctor-portal-server-kbzx.vercel.app/bookings?patient=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

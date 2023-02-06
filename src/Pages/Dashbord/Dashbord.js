@@ -25,7 +25,7 @@ const Dashbord = () => {
                     {
                         !admin && <>
                            
-                            <li><Link to='/myappointments'>My Appointment</Link></li>
+                            <li><Link to='/dashbord/myappointments'>My Appointment</Link></li>
                             <li><Link to='/dashbord/review'>My Review</Link></li>
                         </>
 

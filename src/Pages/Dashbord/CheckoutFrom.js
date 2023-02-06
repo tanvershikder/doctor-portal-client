@@ -16,7 +16,7 @@ const CheckoutFrom = ({appointment}) => {
     const {_id,price,patient,patientName} = appointment;
 
     useEffect(()=>{
-        fetch('https://pacific-stream-06908.herokuapp.com/create-payment-intent',{
+        fetch('https://doctor-portal-server-kbzx.vercel.app/create-payment-intent',{
             method:'POST',
             headers: {
                 'content-type':'application/json',
@@ -90,7 +90,7 @@ const CheckoutFrom = ({appointment}) => {
                 appointment:appointment
             }
 
-              fetch(`https://pacific-stream-06908.herokuapp.com/bookings/${_id}`,{
+              fetch(`https://doctor-portal-server-kbzx.vercel.app/bookings/${_id}`,{
                   method:'PATCH',
                   headers: {
                     'content-type':'application/json',

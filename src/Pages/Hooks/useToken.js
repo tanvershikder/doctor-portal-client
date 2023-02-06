@@ -7,7 +7,7 @@ const useToken = user =>{
         const email = user?.user?.email;
         const currentUser = {email:email}
         if(email){
-            fetch(`https://pacific-stream-06908.herokuapp.com/user/${email}`,{
+            fetch(`https://doctor-portal-server-kbzx.vercel.app/user/${email}`,{
                 method:'PUT',
                 headers:{
                     'content-type': 'application/json'

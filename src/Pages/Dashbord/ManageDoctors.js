@@ -8,7 +8,7 @@ const ManageDoctors = () => {
     
     const [deleteDoctor,setDeleteDoctor] = useState(null)
 
-    const { data: doctors, isLoading ,refetch} = useQuery('doctor', () => fetch('https://pacific-stream-06908.herokuapp.com/doctors', {
+    const { data: doctors, isLoading ,refetch} = useQuery('doctor', () => fetch('https://doctor-portal-server-kbzx.vercel.app/doctors', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

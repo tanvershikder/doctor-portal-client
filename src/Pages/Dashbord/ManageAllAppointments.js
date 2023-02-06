@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 const ManageAllAppointments = () => {
 
 
-    const { data: appointments, isLoading, refetch } = useQuery('users', () => fetch('https://pacific-stream-06908.herokuapp.com/allbooking', {
+    const { data: appointments, isLoading, refetch } = useQuery('users', () => fetch('https://doctor-portal-server-kbzx.vercel.app/allbooking', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -24,7 +24,7 @@ const ManageAllAppointments = () => {
         const procide = window.confirm("are you sure ? you want to delete ?")
 
         if (id && procide) {
-            fetch(`https://pacific-stream-06908.herokuapp.com/allbooking/${id}`,{
+            fetch(`https://doctor-portal-server-kbzx.vercel.app/allbooking/${id}`,{
                 method:"DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -6,7 +6,7 @@ const useAdmin = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`https://pacific-stream-06908.herokuapp.com/admin/${email}`, {
+            fetch(`https://doctor-portal-server-kbzx.vercel.app/admin/${email}`, {
                 method: 'GET',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

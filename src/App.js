@@ -42,7 +42,7 @@ function App() {
         } >
           
           <Route index element={<MyProfile></MyProfile>} />
-          <Route path='payment/:appointmentId' element={<Payment></Payment>} />
+          <Route path='myappointments/payment/:appointmentId' element={<Payment></Payment>} />
           <Route path="review" element={<MyReview></MyReview>}></Route>
           <Route path="myappointments" element={<MyAppointments></MyAppointments>}></Route>
           <Route path="allUsers" element={<RequireAdmin>

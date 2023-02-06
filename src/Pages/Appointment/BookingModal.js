@@ -33,7 +33,7 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
             phone: event.target.phone.value
         }
 
-        fetch('https://pacific-stream-06908.herokuapp.com/bookings', {
+        fetch('https://doctor-portal-server-kbzx.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
